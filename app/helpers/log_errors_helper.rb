@@ -1,0 +1,2 @@
+module LogErrorsHelper
+end

@@ -1,0 +1,91 @@
+#
+# Main configuration file for functionality of a MobileCloudHQ app instance.
+#
+
+# Configuration shared between all environments:
+defaults: &defaults
+  # The domain from where your app is served
+  app_domain: localhost:3006
+  app_name: Falgun Application Logger and Analytics Platform
+  secure_logins: false
+  time_zone: UTC
+  default_locale: :en
+  smtp_settings:
+    :domain:         engine.local         # the domain your emails will come from
+    :address:        smtp.gmail.com       # SMTP server used to send emails
+    :port:           587
+    :authentication: :plain
+    :user_name:      moteel@gmail.com
+    :password:       moteelat123
+    :activate:       false
+
+    # Set to true when using Gmail
+    :enable_starttls_auto: true
+
+    # Set to true if you have Net::SMTPSyntaxError errors when sending email.
+    # Rails has sometimes a problem when sending email from "Name <address@host.com>".
+    # If you are having problems sending email and your host is correctly configured,
+    # try setting safe_from to true. You may need to create a user account for no-reply@yourapp.com
+    :safe_from: false
+
+
+  facebook:
+    activate: true
+    key: 273472539403786
+    secret: 75189166d982cbe6e90c4390743438a4
+
+  twitter:
+    activate: true
+    key: IZkfzEJg5Toex2ftMfzPHw
+    secret: tnoCzEm2C15DLP95vazkmlA3J33GMPOvte9CfrB1v78
+
+  exception_notification:
+    activate: true
+    exception_sender_address: error-notifier@falgunapp.com
+    exception_recipients:
+     - admin@falgunapp.com
+     - dev1@falgunapp.com
+
+  blacklist_website_name:
+    - www
+    - net
+    - org
+    - dev
+    - asset1
+    - asset2
+    - admin
+    - api
+    - blog
+    - support
+    - mail
+    - wiki
+    - code
+    - bugs
+    - ftp
+    - test
+
+  # Destination where your users could write to ask for help. Accepts an email or website.
+  support: http://help.falgunapp.com
+
+  help_url: http://help.falgunapp.com/
+  support_url: http://falgunapp.com/community
+
+development:
+  <<: *defaults
+  app_domain: localhost.lan
+  api_end_point: http://localhost:3005/api/v1
+  api_limit: 10
+
+production:
+  <<: *defaults
+  app_domain: falgunapp.com
+  api_end_point: http://mobilecloudhq.com/api/v1
+  api_limit: 10
+
+test: &test
+  <<: *defaults
+  app_domain: localhost.lan
+  api_end_point: http://localhost:3005/api/v1
+  api_limit: 10
+cucumber:
+  <<: *test
