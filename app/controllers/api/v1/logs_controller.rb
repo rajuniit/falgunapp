@@ -19,7 +19,7 @@ module Api
       def parse_post_params(params)
         data = {}
         data[:title] = params[:title] if params[:title].present?
-        data[:data] = params[:title] if params[:data].present?
+        data[:data] = params[:data] if params[:data].present?
         data[:log_key] = params[:log_key] if params[:log_key].present?
 
         data

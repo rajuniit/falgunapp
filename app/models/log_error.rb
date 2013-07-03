@@ -3,7 +3,7 @@ class LogError
   include Mongoid::Timestamps
   include MongoidExt::Storage
 
-  ERROR_TYPES = %w[info warning fatal debug]
+  ERROR_TYPES = %w[info warning fatal debug error exception]
 
   field :title, :type => String
   field :data, :type => String

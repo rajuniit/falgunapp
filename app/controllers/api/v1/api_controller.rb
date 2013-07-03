@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ApiController < ApplicationController
+    class ApiController < ActionController::Base
 
       API_VERSION = '1'
       before_filter :login_required
